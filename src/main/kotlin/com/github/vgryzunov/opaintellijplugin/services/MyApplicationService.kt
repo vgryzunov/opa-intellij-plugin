@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.vgryzunov.opaintellijplugin.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.vgryzunov.opaintellijplugin.MyBundle
 
 class MyApplicationService {
 
