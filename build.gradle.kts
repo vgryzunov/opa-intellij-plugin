@@ -1,5 +1,8 @@
+
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.grammarkit.tasks.GenerateLexerTask
+import org.gradle.api.file.DuplicatesStrategy
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -16,6 +19,8 @@ plugins {
     id("org.jetbrains.qodana") version "0.1.13"
     // Gradle Kover Plugin
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
+    // Grammar Kit Gradle Plugin
+    id("org.jetbrains.grammarkit") version "2021.2.2"
 }
 
 group = properties("pluginGroup")
@@ -31,6 +36,11 @@ kotlin {
     jvmToolchain(11)
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
     pluginName.set(properties("pluginName"))
@@ -39,6 +49,18 @@ intellij {
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
+}
+
+sourceSets {
+    main {
+        java.srcDirs("src/main/gen")
+        kotlin.srcDirs("src/main/kotlin")
+        resources.srcDirs("src/main/resources")
+    }
+    test {
+        kotlin.srcDirs("src/test/kotlin")
+        resources.srcDirs("src/test/resources")
+    }
 }
 
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
@@ -93,6 +115,32 @@ tasks {
                 )
             }
         })
+    }
+
+    val generateRegoLexer = task<GenerateLexerTask>("generateRegoLexer") {
+        source.set("src/main/grammar/RegoLexer.flex")
+        targetDir.set("src/main/gen/com/github/vgryzunov/opaintellijplugin/lang/lexer")
+        targetClass.set("_RegoLexer")
+        purgeOldFiles.set(true)
+    }
+
+    val generateRegoParser = task<org.jetbrains.grammarkit.tasks.GenerateParserTask>("generateRegoParser") {
+        source.set("src/main/grammar/Rego.bnf")
+        targetRoot.set("src/main/gen")
+        pathToParser.set("/com/github/vgryzunov/opaintellijplugin/lang/parser/RegoParser.java")
+        pathToPsiRoot.set("/com/github/vgryzunov/opaintellijplugin/lang/psi")
+        purgeOldFiles.set(true)
+    }
+
+    compileKotlin {
+        dependsOn(
+            generateRegoLexer,
+            generateRegoParser
+        )
+    }
+
+    processResources {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
 
     // Configure UI tests plugin

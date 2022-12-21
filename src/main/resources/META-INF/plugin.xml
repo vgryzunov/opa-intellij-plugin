@@ -7,6 +7,14 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <fileType name="Rego file"
+                  implementationClass="com.github.vgryzunov.opaintellijplugin.lang.RegoFileType"
+                  fieldName="INSTANCE"
+                  language="rego"
+                  extensions="rego"/>
+
+        <!-- Highlighting -->
+        <lang.parserDefinition language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.lang.parser.RegoParserDefinition" />
     </extensions>
 
 </idea-plugin>
