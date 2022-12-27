@@ -9,7 +9,6 @@ import com.github.vgryzunov.opaintellijplugin.lang.RegoLanguage
 
 class RegoFile(fileViewProvider: FileViewProvider) : PsiFileBase(fileViewProvider, RegoLanguage) {
     override fun getFileType(): FileType = RegoFileType
-
     override fun toString(): String = "Rego File"
 
 }

@@ -15,6 +15,13 @@
 
         <!-- Highlighting -->
         <lang.parserDefinition language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.lang.parser.RegoParserDefinition" />
+        <lang.syntaxHighlighterFactory language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoHighlighterFactory"/>
+
+        <!-- Annotator -->
+        <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoHighlighterAnnotator"/>
+        <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoSyntaxErrorAnnotator"/>
+
+
     </extensions>
 
 </idea-plugin>
