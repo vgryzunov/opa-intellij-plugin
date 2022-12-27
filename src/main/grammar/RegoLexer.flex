@@ -77,6 +77,9 @@ COMMENT=[ \t]*#[^\r\n]*
   "%"                 { return REMAINDER; }
   "set("              { return SET_OPEN; }
   "null"              { return NULL; }
+  "contains"          { return CONTAINS; }
+  "if"                { return IF; }
+  "every"             { return EVERY; }
 
   {ASCII_LETTER}      { return ASCII_LETTER; }
   {NUMBER}            { return NUMBER; }

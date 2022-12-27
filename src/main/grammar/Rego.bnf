@@ -61,13 +61,17 @@
         STRING_TOKEN        = 'regexp:"([^\\"\r\n]|\\[^\r\n])*"?'
         RAW_STRING          = 'regexp:`[^`]*(`)?'
         COMMENT             = 'regexp:[ \t]*#[^\r\n]*'
+
+        EVERY               = 'every'
+        CONTAINS            = 'contains'
+        IF                  = 'if'
     ]
 }
 module              ::= package (import|  rule)*
 package             ::= "package" ref
 import              ::= "import" ref ( "as" var )?
 rule                ::= "default"?  rule-head  rule-body*
-rule-head           ::= var ( "(" rule-args? ")" )? ("[" term "]" )? ( ( ":=" | "=" ) expr )?
+rule-head           ::= var ( "(" rule-args? ")" )? ("[" term "]" )? ( ( ":=" | "=" ) expr )? ( contains term if )?
 rule-args           ::= term ( "," term )*
 rule-body           ::= else-expr  | query-block
 else-expr           ::= else "=" expr  query-block? | else "="? query-block
