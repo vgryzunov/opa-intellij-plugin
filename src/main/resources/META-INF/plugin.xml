@@ -21,6 +21,8 @@
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoHighlighterAnnotator"/>
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoSyntaxErrorAnnotator"/>
 
+        <moduleType id="REGO_MODULE" implementationClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleType"/>
+        <moduleBuilder builderClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleBuilder" />
         <configurationType implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaEvalRunConfigurationType"/>
         <configurationType implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.OpaTestRunConfigurationType"/>
 
