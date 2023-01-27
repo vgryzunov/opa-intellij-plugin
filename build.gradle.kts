@@ -51,6 +51,13 @@ intellij {
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
 }
 
+dependencies {
+    implementation("com.github.kittinunf.fuel", "fuel", "2.3.1"){
+        exclude("org.jetbrains.kotlin")
+    }
+    testImplementation("org.assertj:assertj-core:3.16.1")
+}
+
 sourceSets {
     main {
         java.srcDirs("src/main/gen")

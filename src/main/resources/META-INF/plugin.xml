@@ -21,6 +21,13 @@
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoHighlighterAnnotator"/>
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoSyntaxErrorAnnotator"/>
 
+        <configurationType implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaEvalRunConfigurationType"/>
+        <configurationType implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.OpaTestRunConfigurationType"/>
+
+        <runConfigurationProducer implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.producer.OpaEvalRunConfigurationProducer" />
+        <runConfigurationProducer implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.producer.OpaTestRunConfigurationProducer" />
+
+        <runLineMarkerContributor language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.linemarkers.OpaCommandRunLineMarker"/>
 
     </extensions>
 
