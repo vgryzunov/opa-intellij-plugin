@@ -73,7 +73,7 @@ class OPAActionToolWindow {
                 OSProcessHandler(commandLine)
             } catch (e: ProcessNotCreatedException) {
                 //Suggest to install opa binary in case of failure
-                val notification = Notification("ActionNotPerformed", title, e.localizedMessage, NotificationType.ERROR)
+                val notification = Notification("OpaInstallation", title, e.localizedMessage, NotificationType.ERROR)
                 notification.addAction(InstallOPA.INSTANCE)
                 notification.notify(project)
                 return

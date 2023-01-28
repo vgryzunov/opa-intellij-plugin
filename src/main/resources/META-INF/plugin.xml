@@ -17,6 +17,10 @@
         <lang.parserDefinition language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.lang.parser.RegoParserDefinition" />
         <lang.syntaxHighlighterFactory language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoHighlighterFactory"/>
 
+        <!-- Notifications -->
+        <notificationGroup id="OpaInstallation"
+                           displayType="BALLOON"
+                           key="notification.group.opa.install"/>
         <!-- Annotator -->
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoHighlighterAnnotator"/>
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoSyntaxErrorAnnotator"/>
@@ -30,7 +34,61 @@
         <runConfigurationProducer implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.producer.OpaTestRunConfigurationProducer" />
 
         <runLineMarkerContributor language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.linemarkers.OpaCommandRunLineMarker"/>
+        <moduleBuilder id="REGO_MODULE" builderClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleBuilder" order="first"/>
 
     </extensions>
+
+    <actions>
+
+        <!-- All OPA actions -->
+        <group id="org.openpolicyagent.ideaplugin.actions.OpaActions" text="OPA Actions" popup="true" icon="AllIcons.Actions.RealIntentionBulb">
+            <add-to-group group-id="CodeMenu" anchor="first"/>
+            <action id="org.openpolicyagent.ideaplugin.actions.InstallOPA"
+                    class="com.github.vgryzunov.opaintellijplugin.ide.actions.InstallOPA"
+                    text="Install opa binary"
+                    description="Install OPA binary"
+                    icon="AllIcons.Actions.RealIntentionBulb">
+            </action>
+            <action id="org.openpolicyagent.ideaplugin.actions.FmtAction"
+                    class="com.github.vgryzunov.opaintellijplugin.ide.actions.FmtAction"
+                    text="Reformat with opa fmt"
+                    description="Reformat current file with OPA Fmt"
+                    icon="AllIcons.Actions.RealIntentionBulb">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl I"/>
+            </action>
+            <action id="org.openpolicyagent.ideaplugin.actions.CheckDocumentAction"
+                    class="com.github.vgryzunov.opaintellijplugin.ide.actions.CheckDocumentAction"
+                    text="Check current open file with opa check"
+                    description="Check current open file with Opa Check"
+                    icon="AllIcons.Actions.RealIntentionBulb">
+            </action>
+            <action id="org.openpolicyagent.ideaplugin.actions.TestAction"
+                    class="com.github.vgryzunov.opaintellijplugin.ide.actions.TestAction"
+                    text="Test workspace with opa test"
+                    description="Test workspace with opa test"
+                    icon="AllIcons.Actions.RealIntentionBulb">
+            </action>
+            <action id="org.openpolicyagent.ideaplugin.actions.TestCoverageAction"
+                    class="com.github.vgryzunov.opaintellijplugin.ide.actions.TestCoverageAction"
+                    text="View test coverage for workspace with opa test --coverage"
+                    description="View test coverage for workspace with opa test --coverage"
+                    icon="AllIcons.Actions.RealIntentionBulb">
+            </action>
+
+            <action id="org.openpolicyagent.ideaplugin.actions.TraceSelectionAction"
+                    class="com.github.vgryzunov.opaintellijplugin.ide.actions.TraceSelectionAction"
+                    text="Display trace of selection in active editor"
+                    description="Display trace of selection in active editor"
+                    icon="AllIcons.Actions.RealIntentionBulb">
+            </action>
+        </group>
+
+        <action id="org.openpolicyagent.ideaplugin.ide.actions.RegoCreateFileAction"
+                class="com.github.vgryzunov.opaintellijplugin.ide.actions.RegoCreateFileAction"
+                text="Rego File"
+                description="Create new Rego file">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+    </actions>
 
 </idea-plugin>

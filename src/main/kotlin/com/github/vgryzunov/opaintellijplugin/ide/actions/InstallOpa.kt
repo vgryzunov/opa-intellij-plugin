@@ -26,10 +26,10 @@ class InstallOPA : DumbAwareAction() {
         if (PathEnvironmentVariableUtil.findInPath(OpaBaseTool.opaBinary) != null) {
             if (e.project != null) {
                 Notification(
-                    "ActionNotPerformed",
+                    "OpaInstallation",
                     "Install OPA",
                     "OPA binary already exists",
-                    NotificationType.WARNING
+                    NotificationType.INFORMATION
                 ).notify(e.project)
             }
             return
