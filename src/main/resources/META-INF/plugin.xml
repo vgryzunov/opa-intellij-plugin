@@ -40,6 +40,7 @@
         <runLineMarkerContributor language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.linemarkers.OpaCommandRunLineMarker"/>
         <moduleBuilder id="REGO_MODULE" builderClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleBuilder" order="first"/>
 
+        <sdkType implementation="com.github.vgryzunov.opaintellijplugin.module.sdk.RegoSdkType"/>
     </extensions>
 
     <actions>
