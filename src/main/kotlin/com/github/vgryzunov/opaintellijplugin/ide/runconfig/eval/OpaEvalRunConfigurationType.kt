@@ -1,5 +1,6 @@
-package com.github.vgryzunov.opaintellijplugin.ide.runconfig
+package com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval
 
+import com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaConfigurationFactory
 import com.github.vgryzunov.opaintellijplugin.lang.RegoIcons
 import com.intellij.execution.configurations.ConfigurationFactory
 import com.intellij.execution.configurations.ConfigurationType

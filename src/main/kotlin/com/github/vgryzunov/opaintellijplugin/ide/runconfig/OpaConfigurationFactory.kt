@@ -5,6 +5,8 @@
 
 package com.github.vgryzunov.opaintellijplugin.ide.runconfig
 
+import com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.OpaEvalRunConfiguration
+import com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.OpaEvalRunConfigurationType
 import com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.OpaTestRunConfiguration
 import com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.OpaTestRunConfigurationType
 import com.intellij.execution.configurations.ConfigurationFactory

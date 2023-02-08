@@ -1,6 +1,6 @@
 package com.github.vgryzunov.opaintellijplugin.ide.runconfig.ui
 
-import com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaEvalRunConfiguration
+import com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.OpaEvalRunConfiguration
 import com.intellij.execution.configuration.EnvironmentVariablesComponent
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
 import com.intellij.openapi.fileChooser.FileTypeDescriptor

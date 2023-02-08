@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-package com.github.vgryzunov.opaintellijplugin.ide.runconfig
+package com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval
 
 import com.intellij.execution.configurations.CommandLineState
 import com.intellij.execution.configurations.GeneralCommandLine

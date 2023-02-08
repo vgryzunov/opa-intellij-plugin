@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-package com.github.vgryzunov.opaintellijplugin.ide.runconfig
+package com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval
 
 import com.github.vgryzunov.opaintellijplugin.ide.runconfig.ui.OpaEvalRunCommandEditor
 import com.github.vgryzunov.opaintellijplugin.openapiext.readPath
@@ -23,9 +23,9 @@ import java.nio.file.Path
 
 class OpaEvalRunConfiguration(
     project: Project,
-                              factory: ConfigurationFactory,
-                              name: String
-): LocatableConfigurationBase<OpaEvalRunProfileState>(project, factory, name) {
+    factory: ConfigurationFactory,
+    name: String
+) : LocatableConfigurationBase<OpaEvalRunProfileState>(project, factory, name) {
     /**
      * the query to evaluate
      */
@@ -48,7 +48,6 @@ class OpaEvalRunConfiguration(
     var additionalArgs: String? = null
     var env: EnvironmentVariablesData = EnvironmentVariablesData.DEFAULT
 
-
     override fun suggestedName(): String? {
         return query
     }
@@ -58,7 +57,6 @@ class OpaEvalRunConfiguration(
     override fun checkConfiguration() {
         checkConfig()
     }
-
 
     private fun checkConfig() {
         // TODO implement more intelligent test when we additionalArgs component will add a real parser (allow auto completion and real parsing of args)

@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-package com.github.vgryzunov.opaintellijplugin.ide.runconfig.producer
+package com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.producer
 
 import com.intellij.execution.actions.ConfigurationContext
 import com.intellij.execution.actions.LazyRunConfigurationProducer
@@ -11,8 +11,8 @@ import com.intellij.execution.configurations.ConfigurationFactory
 import com.intellij.openapi.util.Ref
 import com.intellij.psi.PsiElement
 import com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaConfigurationFactory
-import com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaEvalRunConfiguration
-import com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaEvalRunConfigurationType
+import com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.OpaEvalRunConfiguration
+import com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.OpaEvalRunConfigurationType
 import com.github.vgryzunov.opaintellijplugin.lang.psi.*
 import com.github.vgryzunov.opaintellijplugin.lang.utils.REGO_TEST_RULE_PREFIX
 

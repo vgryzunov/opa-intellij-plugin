@@ -31,10 +31,10 @@
 
         <moduleType id="REGO_MODULE" implementationClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleType"/>
         <moduleBuilder builderClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleBuilder" />
-        <configurationType implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.OpaEvalRunConfigurationType"/>
+        <configurationType implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.OpaEvalRunConfigurationType"/>
         <configurationType implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.OpaTestRunConfigurationType"/>
 
-        <runConfigurationProducer implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.producer.OpaEvalRunConfigurationProducer" />
+        <runConfigurationProducer implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.eval.producer.OpaEvalRunConfigurationProducer" />
         <runConfigurationProducer implementation="com.github.vgryzunov.opaintellijplugin.ide.runconfig.test.producer.OpaTestRunConfigurationProducer" />
 
         <runLineMarkerContributor language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.linemarkers.OpaCommandRunLineMarker"/>

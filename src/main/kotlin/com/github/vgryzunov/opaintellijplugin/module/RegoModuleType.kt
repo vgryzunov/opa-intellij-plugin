@@ -19,11 +19,11 @@ class RegoModuleType : ModuleType<RegoModuleBuilder>("REGO_MODULE") {
     }
 
     override fun getName(): String {
-        return "Rego Project"
+        return "Rego"
     }
 
     override fun getDescription(): String {
-        return "A Rego project is empty. Create a new Rego File to add."
+        return "Rego Module"
     }
 
     override fun getNodeIcon(isOpened: Boolean): Icon {
