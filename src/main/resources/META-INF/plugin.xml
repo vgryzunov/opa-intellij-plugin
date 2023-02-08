@@ -41,6 +41,7 @@
         <moduleBuilder id="REGO_MODULE" builderClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleBuilder" order="first"/>
 
         <sdkType implementation="com.github.vgryzunov.opaintellijplugin.module.sdk.RegoSdkType"/>
+        <facetType implementation="com.github.vgryzunov.opaintellijplugin.facet.RegoFacetType"/>
     </extensions>
 
     <actions>

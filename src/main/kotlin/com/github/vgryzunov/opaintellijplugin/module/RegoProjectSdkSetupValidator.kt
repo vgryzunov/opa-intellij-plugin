@@ -16,7 +16,7 @@ class RegoProjectSdkSetupValidator: ProjectSdkSetupValidator {
 
     override fun getErrorMessage(project: Project, file: VirtualFile): String? {
         if (ProjectJdkTable.getInstance().getSdksOfType(RegoSdkType.getInstance()).isEmpty()) {
-            return "No DemoSdks are configured for this project!"
+            return "OPA is not configured for this project!"
         }
         return null
     }
