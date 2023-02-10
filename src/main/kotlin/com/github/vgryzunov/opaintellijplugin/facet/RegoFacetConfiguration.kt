@@ -6,10 +6,23 @@ import com.intellij.facet.ui.FacetEditorTab
 import com.intellij.facet.ui.FacetValidatorsManager
 
 class RegoFacetConfiguration : FacetConfiguration {
+
+    private var myFacetState: RegoFacetState = RegoFacetState()
+
+    fun getState(): RegoFacetState? {
+        return myFacetState
+    }
+
+    fun loadState(state: RegoFacetState) {
+        myFacetState = state
+    }
+
     override fun createEditorTabs(
-        editorContext: FacetEditorContext?,
-        validatorsManager: FacetValidatorsManager?
+        context: FacetEditorContext,
+        manager: FacetValidatorsManager
     ): Array<FacetEditorTab> {
-        TODO("Not yet implemented")
+        return arrayOf(
+            RegoFacetEditorTab(myFacetState, context, manager)
+        )
     }
 }

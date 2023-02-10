@@ -32,7 +32,7 @@ class RegoModuleBuilder : ModuleBuilder(), ModuleBuilderListener {
     }
 
     override fun moduleCreated(module: Module) {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
 
