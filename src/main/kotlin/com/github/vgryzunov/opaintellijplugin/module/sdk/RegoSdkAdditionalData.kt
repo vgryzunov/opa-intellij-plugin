@@ -9,8 +9,6 @@ class RegoSdkAdditionalData: ValidatableSdkAdditionalData {
         throw  ConfigurationException("Please configure OPA binary")
     }
 
-    fun getRegoSdk() {
-
-    }
+    var sdk: RegoSdk? = null
 
 }

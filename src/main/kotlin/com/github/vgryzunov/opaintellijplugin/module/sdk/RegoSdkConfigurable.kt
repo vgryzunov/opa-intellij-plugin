@@ -8,7 +8,7 @@ import javax.swing.JComponent
 
 class RegoSdkConfigurable(sdkModel: SdkModel, sdkModificator: SdkModificator): AdditionalDataConfigurable {
     private val mySdkModel = sdkModel
-    private val myForm = RegoSdkConfigurableForm(mySdkModel, sdkModificator)
+    private val myForm = RegoSdkConfigurableForm(mySdkModel)
 
     override fun createComponent(): JComponent? {
         TODO("Not yet implemented")
