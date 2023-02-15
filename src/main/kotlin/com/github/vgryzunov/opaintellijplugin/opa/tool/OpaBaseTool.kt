@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-package org.openpolicyagent.ideaplugin.opa.tool
+package com.github.vgryzunov.opaintellijplugin.opa.tool
 
 import com.intellij.openapi.util.SystemInfo
 

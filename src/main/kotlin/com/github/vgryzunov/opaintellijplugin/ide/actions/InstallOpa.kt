@@ -15,7 +15,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.openapi.util.SystemInfo
 import com.intellij.openapi.vfs.LocalFileSystem
-import org.openpolicyagent.ideaplugin.opa.tool.OpaBaseTool
+import com.github.vgryzunov.opaintellijplugin.opa.tool.OpaBaseTool
 import java.io.File
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.result.Result

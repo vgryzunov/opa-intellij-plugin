@@ -17,7 +17,6 @@ import com.github.vgryzunov.opaintellijplugin.ide.extensions.OPAActionToolWindow
 import com.github.vgryzunov.opaintellijplugin.openapiext.execute
 import com.github.vgryzunov.opaintellijplugin.openapiext.isUnitTestMode
 import com.github.vgryzunov.opaintellijplugin.openapiext.virtualFile
-import org.openpolicyagent.ideaplugin.opa.tool.OpaBaseTool
 
 /**
  * Utility class that exposes various OPA actions as functions

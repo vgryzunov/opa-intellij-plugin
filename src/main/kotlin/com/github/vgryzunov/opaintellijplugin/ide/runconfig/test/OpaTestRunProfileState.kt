@@ -12,7 +12,7 @@ import com.intellij.execution.process.ProcessTerminatedListener
 import com.intellij.execution.runners.ExecutionEnvironment
 import com.intellij.execution.runners.ProgramRunner
 import com.intellij.util.execution.ParametersListUtil
-import org.openpolicyagent.ideaplugin.opa.tool.OpaBaseTool
+import com.github.vgryzunov.opaintellijplugin.opa.tool.OpaBaseTool
 import java.nio.charset.StandardCharsets
 
 class OpaTestRunProfileState(

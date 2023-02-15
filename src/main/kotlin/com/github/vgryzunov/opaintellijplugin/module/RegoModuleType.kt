@@ -5,11 +5,8 @@
 
 package com.github.vgryzunov.opaintellijplugin.module
 
-import com.intellij.ide.util.projectWizard.ModuleWizardStep
-import com.intellij.ide.util.projectWizard.WizardContext
 import com.intellij.openapi.module.ModuleType
 import com.intellij.openapi.module.ModuleTypeManager
-import com.intellij.openapi.roots.ui.configuration.ModulesProvider
 import com.github.vgryzunov.opaintellijplugin.lang.RegoIcons
 import javax.swing.Icon
 
@@ -23,22 +20,19 @@ class RegoModuleType : ModuleType<RegoModuleBuilder>("REGO_MODULE") {
     }
 
     override fun getDescription(): String {
-        return "Rego Module"
+        return "Rego module"
     }
 
     override fun getNodeIcon(isOpened: Boolean): Icon {
         return RegoIcons.OPA
     }
 
-    override fun createWizardSteps(wizardContext: WizardContext, moduleBuilder: RegoModuleBuilder, modulesProvider: ModulesProvider): Array<ModuleWizardStep> {
-        return super.createWizardSteps(wizardContext, moduleBuilder, modulesProvider)
-    }
-
     companion object {
         private const val ID = "REGO_MODULE"
-        val INSTANCE: RegoModuleType by lazy { ModuleTypeManager.getInstance().findByID(
-            ID
-        ) as RegoModuleType
+        val INSTANCE: RegoModuleType by lazy {
+            ModuleTypeManager.getInstance().findByID(
+                ID
+            ) as RegoModuleType
         }
     }
 

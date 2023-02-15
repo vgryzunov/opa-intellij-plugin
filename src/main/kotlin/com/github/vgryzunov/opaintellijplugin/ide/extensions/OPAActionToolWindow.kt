@@ -25,7 +25,7 @@ import com.intellij.openapi.wm.ToolWindowManager
 import com.intellij.ui.content.impl.ContentImpl
 import com.github.vgryzunov.opaintellijplugin.ide.actions.InstallOPA
 import com.github.vgryzunov.opaintellijplugin.ide.extensions.OPAActionToolWindow.Companion.OPA_CONSOLE_NAME
-import org.openpolicyagent.ideaplugin.opa.tool.OpaBaseTool
+import com.github.vgryzunov.opaintellijplugin.opa.tool.OpaBaseTool
 import java.awt.BorderLayout
 import java.util.concurrent.ExecutionException
 import javax.swing.JPanel

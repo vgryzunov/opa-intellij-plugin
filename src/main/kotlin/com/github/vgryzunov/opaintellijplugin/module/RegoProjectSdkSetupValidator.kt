@@ -1,6 +1,10 @@
+/*
+ * Use of this source code is governed by the MIT license that can be
+ * found in the LICENSE file.
+ */
+
 package com.github.vgryzunov.opaintellijplugin.module
 
-import com.github.vgryzunov.opaintellijplugin.lang.psi.isNotRegoFile
 import com.github.vgryzunov.opaintellijplugin.module.sdk.RegoSdkType
 import com.intellij.codeInsight.daemon.ProjectSdkSetupValidator
 import com.intellij.openapi.project.Project
