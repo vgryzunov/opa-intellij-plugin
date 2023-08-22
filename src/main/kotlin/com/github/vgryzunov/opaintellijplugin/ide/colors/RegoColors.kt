@@ -22,9 +22,8 @@ import com.intellij.openapi.options.colors.AttributesDescriptor
  */
 enum class RegoColor(humanName: String, val default: TextAttributesKey? = null) {
 
-
     CALL("Identifiers//Builtin", DefaultLanguageHighlighterColors.FUNCTION_CALL),
-    HEAD("Identifiers//Rule Head", DefaultLanguageHighlighterColors.CLASS_REFERENCE),
+    RULE_HEAD("Identifiers//Rule Head", DefaultLanguageHighlighterColors.CLASS_REFERENCE),
     KEYWORD("Keywords//Keyword", DefaultLanguageHighlighterColors.KEYWORD),
     NUMBER("Literals//Number", DefaultLanguageHighlighterColors.NUMBER),
     BOOLEAN("Literals//Boolean", DefaultLanguageHighlighterColors.NUMBER),

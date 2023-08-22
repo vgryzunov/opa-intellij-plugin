@@ -7,12 +7,10 @@ import org.gradle.api.file.DuplicatesStrategy
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
-    // Java support
-    id("java")
-    // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.7.21"
+    idea
+    kotlin("jvm") version "1.8.10"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.12.0"
+    id("org.jetbrains.intellij") version "1.14.2"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.0.0"
     // Gradle Qodana Plugin
@@ -33,12 +31,12 @@ repositories {
 
 // Set the JVM language level used to build project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
@@ -94,6 +92,11 @@ tasks {
     wrapper {
         gradleVersion = properties("gradleVersion")
     }
+
+//    clean {
+//        println("Cleaning generated files: ${rootDir}/src/main/gen/")
+//        delete("${rootDir}/src/main/gen/")
+//    }
 
     patchPluginXml {
         version.set(properties("pluginVersion"))

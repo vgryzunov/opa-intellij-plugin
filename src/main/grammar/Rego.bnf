@@ -65,46 +65,79 @@
         EVERY               = 'every'
         CONTAINS            = 'contains'
         IF                  = 'if'
+        IN                  = 'in'
+        EVERY               = 'every'
+
+        CR                  = '\r'
+        LF                  = '\l'
     ]
 }
-module              ::= package (import|  rule)*
-package             ::= "package" ref
-import              ::= "import" ref ( "as" var )?
-rule                ::= "default"?  rule-head  rule-body*
-rule-head           ::= var ( "(" rule-args? ")" )? ("[" term "]" )? ( ( ":=" | "=" ) expr )? ( contains term if )?
+module              ::= package (import)* policy
+package             ::= PACKAGE_TOKEN ref
+import              ::= IMPORT_TOKEN ref [ AS var ]
+policy              ::= (rule)*
+
+rule                ::= [DEFAULT]  rule-head  (rule-body)*
+rule-head           ::= (ref | var) ( rule-head-set | rule-head-obj | rule-head-func | rule-head-comp )
+rule-head-set       ::= CONTAINS term [IF] | "[" term "]"
+rule-head-obj       ::= "[" term "]" [assign-operator term] [IF]
+
+rule-head-func      ::= "(" rule-args ")" [assign-operator term] [IF]
+rule-head-comp      ::= [assign-operator term] [IF]
 rule-args           ::= term ( "," term )*
-rule-body           ::= else-expr  | query-block
-else-expr           ::= else "=" expr  query-block? | else "="? query-block
-query-block         ::= "{" query "}"
-query               ::= ( literal |';' )+
-literal             ::= ( some-decl | literal-expr | "not" literal-expr )  with-modifier*
-with-modifier       ::= "with" term "as" term
-some-decl           ::= "some" var ( "," var )*
-literal-expr        ::= expr  ((':=' | '=') expr)?
-expr                ::= expr-infix | (expr-call ref-arg*)  | term
-expr-call           ::= var ref-arg-dot* "(" ( expr ( "," expr )* ","? )? ")"
+rule-body           ::= [ ELSE [assign-operator term] [IF] ] ( "{" query "}"  ) /*| literal*/
+query               ::= (literal | (";" | ([CR] LF)) )+
+literal             ::= ( some-decl | expr | NOT expr ) with-modifier*
+some-decl           ::= SOME term ( "," term )* (IN expr)*
+with-modifier       ::= WITH term AS term
+expr                ::= expr-call | expr-infix | expr-every expr-parens | unary-expr | term
+expr-call           ::= var ref-arg-dot* "(" [ expr ( "," expr )* ] ")"
 expr-infix          ::= factor-expr  (infix-operator factor-expr)*
 factor-expr         ::= ("(" expr-infix ")") | term
-term                ::= ref | var | scalar | array | object | set | array-compr | object-compr | set-compr
+expr-every          ::= EVERY var ( "," var )* IN ( term | expr-call | expr-infix ) "{" query "}"
+expr-parens         ::= "(" expr ")"
+unary-expr          ::= "-" expr
+
+membership          ::= term [ "," term ] IN term
+term                ::= ref | var | scalar | array | object | set | array-compr | object-compr | set-compr | membership
+
+/*
+term                ::=
+      ref t1
+    | var t1
+    | scalar t1
+    | array t1
+    | object t1
+    | set t1
+    | array-compr t1
+    | object-compr t1
+    | set-compr t1
+
+t1      ::= term t1  ("," term )? IN term
+*/
+
 array-compr         ::= "[" term "|" query "]"
 set-compr           ::= "{" term "|" query "}"
-object-compr        ::= "{" term-pair "|" query "}"
-term-pair           ::= term  ":"  term
-infix-operator      ::= bool-operator | arith-operator | bin-operator
+object-compr        ::= "{" object-item "|" query "}"
+infix-operator      ::= assign-operator | bool-operator | arith-operator | bin-operator
 bool-operator       ::= "==" | "!=" | "<" | ">" | ">=" | "<="
-arith-operator      ::= "+" | "-" | "*" | "/" | "%"
+arith-operator      ::= "+" | "-" | "*" | "/"
 bin-operator        ::= "&" | "|"
-ref                 ::= ( expr-call  | array | object | set | array-compr | object-compr | set-compr |var  )  ref-arg*
+assign-operator     ::= ":=" | "="
+
+ref                 ::= ( var | array | object | set | array-compr | object-compr | set-compr | expr-call ) ref-arg*
 ref-arg             ::= ref-arg-dot | ref-arg-brack
-ref-arg-brack       ::= "[" ( expr | "_" ) "]"
+ref-arg-brack       ::= "[" ( scalar | var | array | object | set | "_" )* "]"
 ref-arg-dot         ::= "." var
 var                 ::= ASCII_LETTER
+
 scalar              ::= string | NUMBER | TRUE | FALSE | NULL
 string              ::= STRING_TOKEN| RAW_STRING
-array               ::= '[' expr? ( ',' expr )* ','? ']'
-object              ::= '{' object-item? ( ',' object-item )* ','? '}'
-object-item         ::= ( scalar | ref | var ) ":" expr
+
+array               ::= "[" [term] ( "," term )* [',']"]"
+object              ::= "{" object-item ( "," object-item )* "}"
+object-item         ::= ( scalar | ref | var ) ":" term
 set                 ::= empty-set | non-empty-set
-non-empty-set       ::= "{" term ( "," term )* ','?  "}"
-empty-set           ::= "set(" ")"
+non-empty-set       ::= "{" term ( "," term )* "}"
+empty-set           ::= SET_OPEN ")"
 

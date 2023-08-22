@@ -27,6 +27,7 @@
                            key="notification.group.opa.install"/>
         <!-- Annotator -->
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoHighlighterAnnotator"/>
+        <lang.commenter language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoCommenter"/>
         <annotator language="rego" implementationClass="com.github.vgryzunov.opaintellijplugin.ide.highlight.RegoSyntaxErrorAnnotator"/>
 
         <moduleType id="REGO_MODULE" implementationClass="com.github.vgryzunov.opaintellijplugin.module.RegoModuleType"/>

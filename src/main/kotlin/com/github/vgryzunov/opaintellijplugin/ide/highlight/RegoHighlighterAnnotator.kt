@@ -7,7 +7,9 @@ package com.github.vgryzunov.opaintellijplugin.ide.highlight
 import com.github.vgryzunov.opaintellijplugin.ide.colors.RegoColor
 import com.github.vgryzunov.opaintellijplugin.lang.psi.RegoEmptySet
 import com.github.vgryzunov.opaintellijplugin.lang.psi.RegoExprCall
-import com.github.vgryzunov.opaintellijplugin.lang.psi.RegoRule
+import com.github.vgryzunov.opaintellijplugin.lang.psi.RegoRuleHead
+import com.github.vgryzunov.opaintellijplugin.lang.psi.RegoVar
+import com.github.vgryzunov.opaintellijplugin.lang.psi.RegoRuleHeadComp
 import com.github.vgryzunov.opaintellijplugin.openapiext.isUnitTestMode
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.HighlightSeverity
@@ -15,11 +17,12 @@ import com.intellij.psi.PsiElement
 
 class RegoHighlighterAnnotator : AnnotatorBase() {
     // visibility for Testing
-    val usedColors = listOf(RegoColor.HEAD.textAttributesKey, RegoColor.CALL.textAttributesKey)
+    val usedColors = listOf(RegoColor.RULE_HEAD.textAttributesKey, RegoColor.CALL.textAttributesKey)
 
     override fun annotateInternal(element: PsiElement, holder: AnnotationHolder) {
         val (style, range) = when (element) {
-            is RegoRule -> Pair(RegoColor.HEAD, element.ruleHead.`var`.textRange)
+            is RegoVar -> Pair(RegoColor.RULE_HEAD, element.textRange)
+
 
             is RegoEmptySet -> Pair(RegoColor.CALL, element.textRange)
 
